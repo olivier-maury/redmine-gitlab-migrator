@@ -265,6 +265,10 @@ def convert_issue(redmine_api_key, redmine_issue, redmine_user_index, gitlab_use
 
     estimated_hours = redmine_issue.get('estimated_hours', 0)
     spent_hours = redmine_issue.get('spent_hours', 0)
+    if estimated_hours == "0.0":
+        estimated_hours = 0
+    if spent_hours == "0.0":
+        spent_hours = 0
 
     meta = {
         'notes': list(convert_notes(redmine_issue['journals'],
